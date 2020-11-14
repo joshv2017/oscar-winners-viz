@@ -6,7 +6,7 @@ Josh Villarreal, Michaela Donato, and Jackie Walzer.
 
 You can find our process book at the follwing <a href="https://docs.google.com/document/d/1e8gJDs7d25U-E5SKizLKKor6LjmbjRTPTelMwxdRuVs/edit?usp=sharing">Google Drive link</a>.
 
-## Sources
+## The data
 
 You can find all data acquisition in the Python notebook `data-creation.ipynb`, in the `python-notebooks` directory. The data that we use for this visualization project comes from two sources:
 - The data on actors and actresses and the Oscars they were nominated for/won comes from the official <a href="http://awardsdatabase.oscars.org/">Official Academy Awards Database</a>. This website provides listings of all awards handed out since the first annual Academy Awards, and we scraped the results page of the website for awards pertaining to Best Actor/Actress. You can find this scraped data in the file `data/awards.csv`.
