@@ -26,8 +26,8 @@
       <change beforePath="$PROJECT_DIR$/../data/awards_backup.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../data/connected_films.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../data/connections_backup.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../python-notebooks/.ipynb_checkpoints/data-creation-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../python-notebooks/.ipynb_checkpoints/data-creation-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../python-notebooks/data-creation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../python-notebooks/data-creation.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +75,8 @@
       <option name="presentableId" value="Default" />
       <updated>1605489260675</updated>
       <workItem from="1605489261858" duration="3925000" />
-      <workItem from="1605493833931" duration="89000" />
+      <workItem from="1605493833931" duration="407000" />
+      <workItem from="1605910481666" duration="38000" />
     </task>
     <servers />
   </component>
@@ -92,5 +93,12 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="421" y="176" width="598" height="548" key="find.popup" timestamp="1605554895301">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="421" y="176" width="598" height="548" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1605554895301" />
   </component>
 </project>
