@@ -20,6 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9d7acf5-2c56-4ed0-b11e-527f4fefc1c8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/js/networkMap.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../data/actors.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../data/actors_backup.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../data/awards.csv" beforeDir="false" />
@@ -28,11 +29,20 @@
       <change beforePath="$PROJECT_DIR$/../data/connections_backup.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../python-notebooks/data-creation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../python-notebooks/data-creation.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -77,6 +87,7 @@
       <workItem from="1605489261858" duration="3925000" />
       <workItem from="1605493833931" duration="407000" />
       <workItem from="1605910481666" duration="38000" />
+      <workItem from="1605923124577" duration="1105000" />
     </task>
     <servers />
   </component>

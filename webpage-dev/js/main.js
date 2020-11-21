@@ -1,38 +1,28 @@
-// Variable for the visualization instance
-let birthMap;
+/* * * * * * * * * * * * * *
+*           MAIN           *
+* * * * * * * * * * * * * */
 
-// d3.json(url).then(jsonData =>{
-// 	console.log(jsonData);
-// });
+// init global variables & switches
+let networkViz;
 
-fetch('data/actors.json', function(d){
-    console.log(d)
-})
-    .then(response => response.json())
-    .then(data => { gettingStarted(data)});
+let selectedTimeRange = [];
 
 
-// function that gets called once data has been fetched.
-// We're handing over the fetched data to this function.
-// From the data, we're creating the final data structure we need and create a new instance of the StationMap
-function gettingStarted(data) {
+// load data using promises
+let promises = [
+    d3.json("data/actors2.json"),  // not projected -> you need to do it
+    d3.csv("data/connections_backup.csv"),
+    d3.csv("data/connected_films.csv")
+];
 
-    console.log(data)
-    console.log(data.birthplace)
-    console.log(data.coordinates)
-    // create empty data structure
+Promise.all(promises)
+    .then( function(data){ initMainPage(data) })
+    .catch( function (err){console.log(err)} );
 
-    displayData = data
-    console.log(Object.keys(displayData.birthplace).length)
-    // Prepare data by looping over stations and populating empty data structure
-    for (let i = 0; i < displayData.length; i++){
-        console.log("HELLO")
-    //     displayData[i].la = +displayData[i].la;
-    //     displayData[i].lo = +displayData[i].lo;
-    }
-    // Display number of actors in DOM
-    $("#actor-count").text(Object.keys(displayData.coordinates).length);
+// initMainPage
+function initMainPage(dataArray) {
 
-    // Instantiate visualization object
-    birthMap = new BirthMap("birth-map", displayData, [42.360082, -71.058880]);
+    // init table
+    networkViz = new NetworkMap("network-map", dataArray[0], dataArray[1], dataArray[2]);
 }
+
