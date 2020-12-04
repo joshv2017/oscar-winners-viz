@@ -1,8 +1,8 @@
-
 /*
- *  StationMap - Object constructor function
+ *  BirthMap - Object constructor function
  *  @param _parentElement   -- HTML element in which to draw the visualization
- *  @param _data            -- Array with all stations of the bike-sharing network
+ *  @param _displayData     -- Array with all actors data
+ *  @param _mapCenter		-- Where to center map
  */
 
 class BirthMap {
@@ -14,6 +14,8 @@ class BirthMap {
 		this.parentElement = parentElement;
 		this.displayData = displayData;
 		this.mapCenter = mapCenter;
+
+		this.parseDate = d3.timeParse("%m/%d/%Y");
 
 		this.initVis();
 	}
@@ -27,47 +29,81 @@ class BirthMap {
 
 		L.Icon.Default.imagePath = 'img/';
 
-		vis.map = L.map('birth-map').setView([40.551341, -96.509443], .75);
+		// call map
+		vis.map = L.map('birth-map').setView(vis.mapCenter, 1.5);
 
 		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 			attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 		}).addTo(vis.map);
 
-		vis.popupContent = "<strong>Maxwell Dworkin</strong><br/>";
-		vis.popupContent += "Cambridge, MA";
-
-		vis.marker = L.marker([42.378774, -71.117303])
-			.bindPopup(vis.popupContent)
-			.addTo(vis.map);
-
+		// init marker group for clearing later
+		vis.markerGroup = L.layerGroup()
 
 		vis.wrangleData();
-
-}
+	}
 	/*
 	 *  Data wrangling
 	 */
 	wrangleData() {
 		let vis = this;
 
-		// No data wrangling/filtering needed
+		// filter according to selectedTimeRange
+		// init empty array
+		let filteredData = [];
 
-		// Update the visualization
+		// check for selectedTimeRange
+		console.log(selectedTimeRange)
+
+		// if there is a time range selected
+		if (selectedTimeRange.length !== 0){
+			// push rows within the time range to filteredData
+			vis.displayData.forEach( row => {
+				if (selectedTimeRange[0].getTime() <= row.birthday && row.birthday <= selectedTimeRange[1].getTime() ){
+					filteredData.push(row);
+				}
+			});
+			// no time range selected
+		} else {
+			filteredData = vis.displayData;
+		}
+
+		// check dataset
+		//console.log(filteredData);
+
+		vis.actorsByBirthday = filteredData
+
+		// update the visualization
 		vis.updateVis();
 	}
 
 	updateVis() {
 		let vis = this;
-		for (let i = 0; i < Object.keys(displayData.coordinates).length; i++) {
 
-			vis.popupContent = "<strong>" + (vis.displayData.name[i]) + "</strong><br/>";
-			vis.popupContent += "Birthplace: " + (vis.displayData.birthplace[i]) + "<br><br>";
-			vis.popupContent += "Birthday: " + (vis.displayData.birthday[i]) + "<br><br>";
+		// clear old markers
+		vis.markerGroup.clearLayers();
 
-			vis.marker = L.marker([(vis.displayData.coordinates[i])[0], (vis.displayData.coordinates[i])[1]])
-				.bindPopup(vis.popupContent)
-				.addTo(vis.map);
+		// dynamic domains with selected attributes and years for x and y axes
+		let yearInitial = d3.select('#start-year').property('value');
+		let yearFinal = d3.select('#end-year').property('value');
 
+		// filter actorsByBirthday based on selected time range
+		let yearChosen = vis.actorsByBirthday.filter((val, _) => {
+			return ((val.birthday) >= yearParse(yearInitial)) && ((val.birthday) <= yearParse(yearFinal))
+		});
+
+		// place markers and tooltip
+		for (let i = 0; i < (yearChosen).length; i++) {
+			// get current actor
+			let currentActor = getCurrentActor(yearChosen[i].name, vis.actorsByBirthday);
+
+			// add markers to markerGroup
+			vis.marker = L.marker([(yearChosen[i].coordinates[0]), (yearChosen[i].coordinates[1])])
+				.bindPopup(createActorTooltip(currentActor))
+				.addTo(vis.markerGroup)
 		}
 
-	}}
+		// add marker group to map
+		vis.markerGroup.addTo(vis.map)
+	}
+
+}

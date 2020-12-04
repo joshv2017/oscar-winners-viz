@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -20,17 +23,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9d7acf5-2c56-4ed0-b11e-527f4fefc1c8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/js/networkMap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/network_data.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/barChart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/brushVis.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/helpers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../data/actors.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../data/actors_backup.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../data/awards.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../data/awards_backup.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../data/connected_films.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../data/connections_backup.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python-notebooks/.ipynb_checkpoints/Untitled-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python-notebooks/Untitled.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../python-notebooks/data-creation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../python-notebooks/data-creation.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/actor_id.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/actors.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/actors2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/actors_backup.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/awards_backup.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/connections_backup.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/id_actor.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/birthMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/birthMap.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/networkMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/networkMap.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,16 +66,19 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1kLoW5x9hpUtZFcr9xpTsTl7IDI" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/js" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -66,13 +87,22 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/js" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.index.html">
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/webpage-dev/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="main.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/js/main.js" working-dir="$PROJECT_DIR$/js">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="Node.js.main.js" />
       </list>
     </recent_temporary>
   </component>
@@ -87,7 +117,13 @@
       <workItem from="1605489261858" duration="3925000" />
       <workItem from="1605493833931" duration="407000" />
       <workItem from="1605910481666" duration="38000" />
-      <workItem from="1605923124577" duration="1105000" />
+      <workItem from="1605923124577" duration="3967000" />
+      <workItem from="1605986644607" duration="4213000" />
+      <workItem from="1605994819770" duration="12362000" />
+      <workItem from="1606061808239" duration="1923000" />
+      <workItem from="1606064280383" duration="4129000" />
+      <workItem from="1606085675220" duration="6728000" />
+      <workItem from="1607031222056" duration="5220000" />
     </task>
     <servers />
   </component>
@@ -106,10 +142,21 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="421" y="176" width="598" height="548" key="find.popup" timestamp="1605554895301">
+    <state x="421" y="176" width="598" height="548" key="find.popup" timestamp="1607031233856">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="421" y="176" width="598" height="548" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1605554895301" />
+    <state x="421" y="176" width="598" height="548" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1607031233856" />
+    <state x="385" y="210" key="run.anything.popup" timestamp="1606086122248">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="210" key="run.anything.popup/0.0.1440.900@0.0.1440.900" timestamp="1606086122248" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1607098613764">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1607098613764" />
   </component>
 </project>
