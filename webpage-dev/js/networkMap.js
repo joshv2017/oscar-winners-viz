@@ -20,7 +20,6 @@ class NetworkMap {
         this.initVis();
     }
 
-
     // Initialize network map
     initVis() {
         let vis = this;
@@ -50,7 +49,7 @@ class NetworkMap {
         // init radius size
         vis.sameRadius = 5;
         vis.smallestRadius = 2;
-        vis.biggestRadius = 15;
+        vis.biggestRadius = 12;
 
         // init radius scale
         vis.radius = d3.scaleLinear()
@@ -64,21 +63,18 @@ class NetworkMap {
     wrangleData() {
         let vis = this;
 
-        // get new data
-        vis.displayData = vis.networkData;
+        // get current decade selection
+        let selectedDecade = +document.getElementById("decade-selector").value;
 
-        //console.log(vis.displayData)
+        // get data for the decade
+        vis.displayData = vis.networkData[JSON.stringify(selectedDecade)];
 
         // create connectedBool object for use in node clickability
         vis.connectedBool = {}
-        vis.displayData.links.forEach(function(d) {
+        vis.displayData.links.forEach(function (d) {
             vis.connectedBool[`${d.source}, ${d.target}`] = 1;
             vis.connectedBool[`${d.target}, ${d.source}`] = 1;
         });
-
-        // filter for actor info in this decade
-        vis.actorNames = vis.displayData.nodes.map(d => d.name);
-        vis.filteredActors = vis.actorData.filter(person => vis.actorNames.includes(person.name));
 
         // Update the visualization
         vis.updateVis();
@@ -90,11 +86,11 @@ class NetworkMap {
 
         // init force simulator
         vis.simulation = d3.forceSimulation(vis.displayData.nodes)
-            .force('link', d3.forceLink(vis.displayData.links).id(function(n) {
+            .force('link', d3.forceLink(vis.displayData.links).id(function (n) {
                 return n.id
             }))
             .force("charge", d3.forceManyBody().strength([-600]).distanceMax([250]))
-            .force("center", d3.forceCenter(vis.width/2, vis.height/2));
+            .force("center", d3.forceCenter(vis.width / 2, vis.height / 2));
 
         // initialize the links
         vis.linksGroup = vis.networkGroup.append("g")
@@ -108,6 +104,7 @@ class NetworkMap {
             .attr("stroke-width", 0.1)
             .style("stroke", colorScheme[1]);
 
+        vis.links.merge(vis.links);
         vis.links.exit().remove();
 
         // initialize the nodes
@@ -118,38 +115,28 @@ class NetworkMap {
             .data(vis.displayData.nodes)
             .enter()
             .append("circle")
-            .attr("r", function(d) {
-                // get current actor info
-                let current_actor = vis.actorData.filter(d1 => d1.name == d.name)[0];
-                return current_actor.n_wins*4+2;
-            })
+            .attr("r", vis.sameRadius)
             .attr("fill", colorScheme[0])
-            .on("mouseover", function(event, d) {
+            .on("mouseover", function (event, d) {
                 // change color of current
                 d3.select(this)
                     .transition()
-                    .attr('fill', colorScheme[4])
-                    .attr('r', 15);
+                    .attr('fill', colorScheme[2])
 
                 // place and display tooltip
                 vis.tooltip
                     .style("opacity", 1)
                     .style("left", `${event.pageX + 5}px`)
-                    .style("top", function() {
+                    .style("top", function () {
                         return event.pageY < 600 ? `${event.pageY}px` : `${event.pageY - 130}px`
                     })
-                    .html(createActorTooltip(getCurrentActor(d.name, vis.actorData)));
+                    .html(createActorTooltip(getCurrentActor(d.name, vis.actorData), false));
             })
-            .on("mouseout", function(event, d) {
+            .on("mouseout", function () {
                 // change color of current
                 d3.select(this)
                     .transition()
                     .attr('fill', colorScheme[0])
-                    .attr("r", function(d) {
-                        // get current actor info
-                        let currentActor = getCurrentActor(d.name, vis.actorData);
-                        return currentActor.n_wins*4+2;
-                    })
 
                 // hide tooltip
                 vis.tooltip
@@ -158,39 +145,99 @@ class NetworkMap {
                     .style("top", 0)
                     .html(``);
             })
-            .on('click', function(event, d) {
+            .on('click', function (event, d) {
                 // toggle on: show immediate node network
-                console.log(vis.toggle);
-                if (vis.toggle == 0) {
+                if (vis.toggle === 0) {
+                    // update nodes
                     vis.nodes
-                        .attr('opacity', function(n) {
+                        .attr('opacity', function (n) {
                             return vis.connectedBool[`${d.id}, ${n.id}`] ? 1 : 0.1;
                         });
                     d3.select(this).attr('opacity', 1);
+
+                    // update links
+                    vis.links
+                        .style('stroke', function (l) {
+                            return l.target == d || l.source == d ? colorScheme[4] : colorScheme[1]
+                        })
+                        .attr('stroke-width', function (l) {
+                            return l.target == d || l.source == d ? 0.6 : 0.1
+                        });
+
                     vis.toggle = 1;
                 }
                 // toggle off: hide immediate node network
                 else {
                     vis.nodes.attr('opacity', 1);
+                    vis.links.style('stroke', colorScheme[1]).attr('stroke-width', 0.1);
                     vis.toggle = 0;
                 }
             });
 
         vis.nodes.exit().remove();
 
+        // make sure we're sizing nodes correctly
+        if (document.getElementById("size-selector").value !== "constant") {
+            vis.resizeNodes()
+        }
+
         // simulation
-        vis.simulation.nodes(vis.displayData.nodes).on("tick", function() {
+        vis.simulation.nodes(vis.displayData.nodes).on("tick", function () {
             vis.links
-                .attr("x1", function(d) { return d.source.x; })
-                .attr("y1", function(d) { return d.source.y; })
-                .attr("x2", function(d) { return d.target.x; })
-                .attr("y2", function(d) { return d.target.y; });
+                .attr("x1", function (d) {
+                    return d.source.x;
+                })
+                .attr("y1", function (d) {
+                    return d.source.y;
+                })
+                .attr("x2", function (d) {
+                    return d.target.x;
+                })
+                .attr("y2", function (d) {
+                    return d.target.y;
+                });
 
             vis.nodes
-                .attr("cx", function(d) { return d.x = Math.max(5, Math.min(vis.width - 5, d.x)); })
-                .attr("cy", function(d) { return d.y = Math.max(5, Math.min(vis.height - 5, d.y)); });
+                .attr("cx", function (d) {
+                    return d.x = Math.max(5, Math.min(vis.width - 5, d.x));
+                })
+                .attr("cy", function (d) {
+                    return d.y = Math.max(5, Math.min(vis.height - 5, d.y));
+                });
         });
 
         vis.simulation.force("link").links(vis.displayData.links);
+    }
+
+    // Remove groups on decade reselect
+    removeGroups() {
+        d3.select(".links").remove();
+        d3.select(".nodes").remove();
+    }
+
+    // Resize nodes on size reselect
+    resizeNodes() {
+        let vis = this;
+
+        // get selected size
+        let selectedSize = document.getElementById("size-selector").value;
+
+        if (selectedSize == "constant") {
+            vis.nodes.transition().attr("r", vis.sameRadius);
+        } else {
+            // get domain for radius scale
+            let displayedActors = vis.displayData.nodes.map(d => d.name);
+            let displayedActorInfo = vis.actorData.filter(d => displayedActors.includes(d.name));
+            let domain = d3.extent(displayedActorInfo, d => d[selectedSize])
+            vis.radius.domain(domain.map(x => Math.sqrt(x)));
+
+            // resize nodes
+            vis.nodes
+                .transition()
+                .attr("r", function (d) {
+                    let currentActor = getCurrentActor(d.name, vis.actorData);
+                    return vis.radius(Math.sqrt(currentActor[selectedSize]))
+                })
+        }
     }
 }

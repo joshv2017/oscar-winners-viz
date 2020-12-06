@@ -37,7 +37,9 @@ class BrushVis {
         // x scale and axis
         vis.x = d3.scaleTime()
             .range([0, vis.width])
-            .domain(d3.extent(vis.displayData, function(d) {return d.birthday; }));
+            .domain(d3.extent(vis.displayData, function (d) {
+                return d.birthday;
+            }));
         vis.xAxis = d3.axisBottom()
             .scale(vis.x);
 

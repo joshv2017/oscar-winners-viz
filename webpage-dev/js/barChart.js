@@ -2,7 +2,7 @@
  *  BarChart - Object constructor function
  *  @param _parentElement   -- HTML element in which to draw the visualization
  *  @param _actorData       -- Array with biographical information of actors
- *  @param _awardsdata      -- Array encoding information about awards of Oscar nominees
+ *  @param _awardsData      -- Array encoding information about awards of Oscar nominees
  *  @param _nomBool         -- Boolean value denoting whether we're viewing nominees or winners
  *  @param _absoluteBool    -- Boolean value denoting whether or not to normalize data w.r.t. connects
  */
@@ -49,16 +49,13 @@ class BarChart {
             if (vis.nomBool) {
                 if (vis.absoluteBool) {
                     return 'Nominee Connections';
-                }
-                else {
+                } else {
                     return 'Normalized Nominee Connections';
                 }
-            }
-            else {
+            } else {
                 if (vis.absoluteBool) {
                     return 'Winner Connections';
-                }
-                else {
+                } else {
                     return 'Normalized Winner Connections';
                 }
             }
@@ -103,6 +100,7 @@ class BarChart {
         vis.wrangleData();
 
     }
+
     /*
      *  Data wrangling
      */
@@ -113,11 +111,11 @@ class BarChart {
         let filteredData = [];
 
         // if there is a region selected
-        if (selectedTimeRange.length !== 0){
+        if (selectedTimeRange.length !== 0) {
             // iterate over all rows the csv (dataFill)
-            vis.actorData.forEach( row => {
+            vis.actorData.forEach(row => {
                 // and push rows with proper dates into filteredData
-                if (selectedTimeRange[0].getTime() <= row.birthday && row.birthday <= selectedTimeRange[1].getTime() ){
+                if (selectedTimeRange[0].getTime() <= row.birthday && row.birthday <= selectedTimeRange[1].getTime()) {
                     filteredData.push(row);
                 }
             });
@@ -132,7 +130,7 @@ class BarChart {
         let dataByActor = Array.from(d3.group(vis.awardsData, d => d.name), ([key, value]) => ({key, value}));
         vis.actorInfo = [];
 
-        filteredData.forEach( actor => {
+        filteredData.forEach(actor => {
             // getting data from actors database
             let actorName = actor.name;
             let actorBirthday = actor.birthday;
@@ -223,10 +221,13 @@ class BarChart {
 
         // if absolute, sort by number of totCostarFilms; if relative, sort by ratio
         if (vis.absoluteBool) {
-            vis.actorInfo.sort((a, b) => { return b.totCostarFilms - a.totCostarFilms });
-        }
-        else {
-            vis.actorInfo.sort((a, b) => { return b.ratio - a.ratio });
+            vis.actorInfo.sort((a, b) => {
+                return b.totCostarFilms - a.totCostarFilms
+            });
+        } else {
+            vis.actorInfo.sort((a, b) => {
+                return b.ratio - a.ratio
+            });
         }
 
         // slice top ten actors/actresses with highest number of co-stars or highest ratio
@@ -244,8 +245,7 @@ class BarChart {
         if (vis.absoluteBool) {
             vis.maxDomain = d3.max(vis.actorInfo, d => d.totCostarFilms);
             vis.yScale.domain([0, d3.max(vis.topTenData, d => d.totCostarFilms)]);
-        }
-        else {
+        } else {
             vis.maxDomain = d3.max(vis.actorInfo, d => d.ratio);
             vis.yScale.domain([0, d3.max(vis.topTenData, d => d.ratio)]);
         }
@@ -266,7 +266,7 @@ class BarChart {
             .append('rect')
             .merge(vis.bars)
             // mouseover
-            .on('mouseover', function(event, d) {
+            .on('mouseover', function (event, d) {
                 d3.select(this)
                     .attr('stroke-width', '0.75px')
                     .attr('fill', colorScheme[4]);
@@ -280,7 +280,7 @@ class BarChart {
                 // show tooltip
                 vis.tooltip
                     .style('opacity', 1)
-                    .style('left', function() {
+                    .style('left', function () {
                         return event.pageX + 20 < 900 ? event.pageX + 20 + 'px' : event.pageX - 360 + 'px'
                     })
                     .style('top', event.pageY + 'px')
@@ -291,15 +291,14 @@ class BarChart {
                 // reset fill to original
                 d3.select(this)
                     .attr('stroke-width', '0.5px')
-                    .attr('fill', function(d) {
+                    .attr('fill', function (d) {
                         let thisActor = vis.actorInfo.filter(s => s.actor == d.actor)[0];
                         if (typeof thisActor === 'undefined') {
                             return;
                         } else {
                             if (vis.absoluteBool) {
                                 return vis.colorScale(thisActor.totCostarFilms);
-                            }
-                            else {
+                            } else {
                                 return vis.colorScale(thisActor.ratio);
                             }
                         }
@@ -313,16 +312,15 @@ class BarChart {
             // bar attributes
             .transition()
             .attr('x', d => vis.xScale(d.actor) + 5)
-            .attr('y', function(d) {
+            .attr('y', function (d) {
                 if (vis.absoluteBool) {
                     return vis.yScale(d.totCostarFilms)
-                }
-                else {
+                } else {
                     return vis.yScale(d.ratio)
                 }
             })
             .attr('width', vis.xScale.bandwidth() - 5)
-            .attr('height', function(d) {
+            .attr('height', function (d) {
                 if (vis.absoluteBool) {
                     return (vis.height - vis.yScale(d.totCostarFilms))
                 } else {
@@ -330,7 +328,7 @@ class BarChart {
                 }
             })
             .attr('stroke-width', '0.5px')
-            .attr('fill', function(d) {
+            .attr('fill', function (d) {
                 if (vis.absoluteBool) {
                     return vis.colorScale(d.totCostarFilms);
                 } else {

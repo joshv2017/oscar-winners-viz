@@ -2,7 +2,7 @@
 *    Helper functions     *
 * * * * * * * * * * * * * */
 
-// on decade change, update vis
+// on award type change, update vis
 function categoryChange() {
     myWinnerChart.wrangleData();
     myNomineeChart.wrangleData();
@@ -11,7 +11,7 @@ function categoryChange() {
 }
 
 // create tooltip HTML for actor
-function createActorTooltip(currentActor, includeIMDB=true, includeCostars = false, includeNormCostars = false) {
+function createActorTooltip(currentActor, includeIMDB = true, includeCostars = false, includeNormCostars = false) {
 
     // initialize tooltipHTML with basic components
     let tooltipHTML = `
@@ -43,6 +43,12 @@ function createActorTooltip(currentActor, includeIMDB=true, includeCostars = fal
     tooltipHTML += `</p></div>`;
 
     return tooltipHTML
+}
+
+// on decade change, update network vis and reselect sizing
+function decadeChange() {
+    myNetworkViz.removeGroups();
+    myNetworkViz.wrangleData();
 }
 
 // get actor info from name

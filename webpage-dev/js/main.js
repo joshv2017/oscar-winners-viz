@@ -11,7 +11,8 @@ let formatDate = d3.timeFormat("%B %d, %Y");
 let yearParse = d3.timeParse("%Y");
 let selectedTimeRange = [];
 
-let colorScheme = ["#be9d39", "#c1c1c8", "#242423", "#e7e9ea", "#333533"];
+let colorScheme = ["#be9d39", "#c1c1c8", "#242423", "#e7e9ea", "#ab9a69"];
+
 
 // load data using promises
 let promises = [
@@ -22,8 +23,12 @@ let promises = [
 ];
 
 Promise.all(promises)
-    .then( function(data){ prepData(data) })
-    .catch( function (err){console.log(err)} );
+    .then(function (data) {
+        prepData(data)
+    })
+    .catch(function (err) {
+        console.log(err)
+    });
 
 // prepData
 function prepData(dataArray) {
@@ -39,14 +44,13 @@ function prepData(dataArray) {
     }
 
     // prep awards data
-    for (let i = 0; i < dataArray[3].length; i++){
+    for (let i = 0; i < dataArray[3].length; i++) {
         // parse time data
         dataArray[3][i].year = yearParse(dataArray[3][i].year);
         // tidy inconsistencies in the data
         if (dataArray[3][i].award === "ACTOR") {
             dataArray[3][i].award = "ACTOR IN A LEADING ROLE";
-        }
-        else if (dataArray[1][i].award === "ACTRESS") {
+        } else if (dataArray[1][i].award === "ACTRESS") {
             dataArray[3][i].award = "ACTRESS IN A LEADING ROLE";
         }
         // parse bool
@@ -59,12 +63,11 @@ function prepData(dataArray) {
 
 // initMainPage
 function initMainPage(dataArray) {
-
     // init map
     myBirthMap = new BirthMap("birth-map", dataArray[0], [30.833531, 15.403666]);
 
     // init networkViz
-    myNetworkViz = new NetworkMap('network-map-2010', dataArray[0], dataArray[1], dataArray[2]["2010"]);
+    myNetworkViz = new NetworkMap('network-map-2010', dataArray[0], dataArray[1], dataArray[2]);
 
     // init brush
     myBrushVis = new BrushVis('brushDiv', dataArray[0]);
