@@ -13,6 +13,8 @@
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/leaflet.css">
+    <link href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css' rel='stylesheet'
+          type='text/css'>
 </head>
 <body>
 <div class="container-fluid">
@@ -53,6 +55,7 @@
                     by birth year of the actors--has the geographic makeup of today's top actors and actresses changed
                     over time?</p>
             </div>
+
             <div class="row">
                 <!-- Select box to choose year range -->
                 <form class="form-inline">
@@ -409,13 +412,17 @@
                     actors and actresses are connected, it's difficult to ascertain quantitatively whether actors and
                     actresses that are Academy Award-winners are better connected. These bar charts display which
                     winners and nominees have the most appearances with other winners and nominees over the course of
-                    their career, quantifying the number of those connections. Understanding that older actors have by
-                    default more connections to other actors as they have starred in more films, we have normalized
-                    version of these graphs showing the total number of connections divided by the total number of
-                    credited appearances. You can also filter by award type here, and select a range of birth years of
-                    the actor. Do the winners seem to be more connected to other successful actors than the nominees
-                    are? Are the actors that appear in the normalized graphs very different from the actors that appear
-                    in the unnormalized graphs?</p>
+                    their career, quantifying the number of those connections. Understanding that older actors have, by
+                    default, more connections to other actors since they have starred in more films, we have normalized
+                    versions of these graphs showing the total number of connections divided by the total number of
+                    credited appearances. Additionally, the blue line on each of the graphs indicates the median number
+                    of connections, or ratio of connections to films for the normalized graphs, for all of the actors
+                    and actresses.
+                </p>
+                <p class="explanation">You can also filter by award type here, and select a range of birth years of the
+                    actor. Do the winners seem to be more connected to other successful actors than the nominees are?
+                    Are the actors that appear in the normalized graphs very different from the actors that appear in
+                    the unnormalized graphs?</p>
             </div>
             <div class="row">
                 <!-- Select box to choose awards -->
@@ -434,6 +441,12 @@
                 </form>
             </div>
             <div class="row">
+                <label>Click and drag the following timeline to select actors and actresses born in the timerange of your choosing.</label>
+            </div>
+            <div class="row" style="height: 18vh; padding: 0; border: 0">
+                <div id="brushDiv" style="height: 100%; width:100%;"></div>
+            </div>
+            <div class="row">
                 <div class="col" class="barchart-col" style="height: 50vh; padding: 0; border: 0">
                     <div id="nom-chart" style="height: 100%; width:100%;"></div>
                 </div>
@@ -447,30 +460,53 @@
                     <div id="normalized-winner-chart" style="height: 100%; width:100%;"></div>
                 </div>
             </div>
-            <div class="row" style="height: 18vh; padding: 0; border: 0">
-                <div id="brushDiv" style="height: 100%; width:100%;"></div>
-            </div>
 
-            <div class="row">
+            <p class="row">
                 <!-- content | map -->
-                <h3 class="explanation-subheading">Conclusions</h3>
-                <p class="explanation">"Old Hollywood" was a closely connected circle of actors and actresses that were
-                    majority white, American- or European-born, and tended to pump out massive numbers of film and
-                    television appearances. This can be seen in the map shown above.</p>
-                <p class="explanation">The connectedness of pre-1960s Hollywood can also be seen in the bar charts
-                    above; actors and actresses were producing massive numbers of movies and television appearances,
-                    likely with massive numbers of costars. Over time, however, that connectedness, while having stayed
-                    relatively high, is not as apparent for actors and actresses born in more recent years.</p>
-                <p class="explanation">One thing is for certain; there were no "one-hit-wonders" that were able to be
-                    nominated for (nevertheless win) an Oscar. What is clear is that being nominated or being awarded an
-                    Oscar comes from years of working with countless other individuals before you even reach the
-                    Academy's eye.</p>
-            </div>
+            <h3 class="explanation-subheading">Trends over time</h3>
+            <p class="explanation">After playing around with the birthplace visualization, you may have come to one of
+                the same conclusions that we did:</p>
+            <p class="explanation impact">The Oscar-nominated actors and actresses of Old Hollywood were mostly
+                American- and European-born, and we see residual effects of this trend today.</p>
+            <p class="explanation">Parasite (2019) was the first foreign film to win the Academy Award for Best Picture
+                in the history of the organization. There is a striking lack of international actors and actresses
+                nominated for Oscars.</p>
+            <p class="explanation">From both the network visualization and the series of barcharts, you may have also
+                reached the conclusion that</p>
+            <p class="explanation impact">The Oscar-nominated actors and actresses of recent years are not as
+                interconnected
+                as the Oscar-nominated actors and actresses of earlier years.</p>
+            <p class="explanation">You may ask if actors that won Academy Awards in the 1950s, for instance, were better
+                connected with other Oscar nominees of that decade because they were able to live out full lifelong
+                careers, producing more movies and working with more people. This is debunked, however, by taking a
+                closer look at the average number of Oscar-winning costars per film each actor has. This statistic has
+                been on the decline in recent years, indicating that the frequency with which Oscar-nominated actors and
+                actresses work with one another is generally decreasing.</p>
+            <p class="explanation">Take a look at the barchart visualization, and compare the unnormalized graphs
+                to the normalized graphs. You may notice that both the unnormalized winner and nominee graphs contain
+                a mixed bag of men and women, while the normalized graphs feature more women than their unnormalized
+                counterparts. This holds true as you brush
+                through different time periods.</p>
+            <p class="explanation impact">This means that Oscar-winning women are in fewer movies than Oscar-winning
+                men</p>
+            <p class="explanation">The average number of Oscar-nominated costars per film is calculated by dividing the
+                total number of connections an Oscar nominee has by the total number of films the actor has been in.
+                Since the number of connections is the same between men and women, but the average number of costars per
+                film is higher for women than for men, that must mean that Oscar-winning women are in fewer films than
+                their male counterparts. Movies are written for men; Oscar-winning women are simply in fewer films.</p>
+            <p class="explanation"> Finally,</p>
+            <p class="explanation impact">Number of connections is not a good predictor of number of Oscar wins or
+                number of Oscar nominations.</p>
+            <p class="explanation">Our visualization project began with the hypothesis that better-connected actors and
+                actresses are more likely to win Oscars than their less-connected counterparts, but based on the network
+                visualization above, there isn't a clear connection between number of connections to a node and the
+                number of Oscar wins an actor or actress has.</p>
         </div>
     </div>
 </div>
+</div>
 
-<!-- Load JS libraries !!ATTENTION: THIS IS NOT THE SLIM JQUERY VERSION THAT BOOTSTRAP USES/PROVIDES!! -->
+<!-- Load JS libraries -->
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
@@ -479,6 +515,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 <!-- leaflet -->
 <script src="js/leaflet.js"></script>

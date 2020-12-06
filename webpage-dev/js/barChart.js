@@ -1,17 +1,17 @@
 /*
- *  BarChart - Object constructor function
- *  @param _parentElement   -- HTML element in which to draw the visualization
- *  @param _actorData       -- Array with biographical information of actors
- *  @param _awardsData      -- Array encoding information about awards of Oscar nominees
- *  @param _nomBool         -- Boolean value denoting whether we're viewing nominees or winners
- *  @param _absoluteBool    -- Boolean value denoting whether or not to normalize data w.r.t. connects
+ *  BarChart - Object constructor function
+ *  @param _parentElement   -- HTML element in which to draw the visualization
+ *  @param _actorData       -- Array with biographical information of actors
+ *  @param _awardsData      -- Array encoding information about awards of Oscar nominees
+ *  @param _nomBool         -- Boolean value denoting whether we're viewing nominees or winners
+ *  @param _absoluteBool    -- Boolean value denoting whether or not to normalize data w.r.t. connects
  */
 
 class BarChart {
 
     /*
-     *  Constructor method
-     */
+             *  Constructor method
+             */
     constructor(parentElement, actorData, awardsData, nomBool, absoluteBool) {
         this.parentElement = parentElement;
         this.actorData = actorData;
@@ -28,8 +28,8 @@ class BarChart {
 
 
     /*
-     *  Initialize station map
-     */
+             *  Initialize station map
+             */
     initVis() {
         let vis = this;
 
@@ -102,8 +102,8 @@ class BarChart {
     }
 
     /*
-     *  Data wrangling
-     */
+             *  Data wrangling
+             */
     wrangleData() {
         let vis = this;
 
@@ -233,12 +233,23 @@ class BarChart {
         // slice top ten actors/actresses with highest number of co-stars or highest ratio
         vis.topTenData = vis.actorInfo.slice(0, 10);
 
+        if (vis.absoluteBool) {
+            vis.medianPosition = Math.floor((vis.actorInfo.length)/2)
+            vis.medianValue = vis.actorInfo[vis.medianPosition].totCostarFilms
+        }
+        else {
+            vis.medianPosition = Math.floor((vis.actorInfo.length)/2)
+            vis.medianValue = vis.actorInfo[vis.medianPosition].ratio
+
+        }
         // update vis
         vis.updateVis();
     }
 
     updateVis() {
         let vis = this;
+
+        vis.svg.selectAll("path").remove()
 
         // update domains
         // distinguish between absolute charts and ratio charts
@@ -336,6 +347,12 @@ class BarChart {
                 }
             })
         vis.bars.exit().remove();
+
+        vis.averageLine = vis.svg.append("path")
+            .attr('d', d3.line()([[0,vis.yScale(vis.medianValue)],[vis.width,vis.yScale(vis.medianValue)]]))
+            .attr('stroke','#1283e0')
+            .attr('stroke-width','1.8')
+            .attr('fill','none')
 
         // call axes
         vis.svg.select('.x-axis')
