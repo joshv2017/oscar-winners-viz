@@ -5,6 +5,7 @@ A final project for Computer Science 171, Fall 2020, at Harvard University.
 <a href="https://github.com/joshv2017">Josh Villarreal</a>, <a href="https://github.com/michaeladonato">Michaela Donato</a>, and <a href="https://github.com/jackiewalzer">Jackie Walzer</a>.
 
 You can find our process book at the following <a href="https://docs.google.com/document/d/1e8gJDs7d25U-E5SKizLKKor6LjmbjRTPTelMwxdRuVs/edit?usp=sharing">Google Drive link</a>, our two-minute presentation video at this <a href="https://youtu.be/qIc_IyRazk8">Youtube link</a>, and the final version of our website <a href="https://joshv2017.github.io/oscar-winners-viz/webpage-dev/">here</a>.
+
 ---
 ## The data
 
