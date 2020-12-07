@@ -30,30 +30,27 @@
             <div class="row">
                 <!-- content | map -->
                 <h3 class="explanation-subheading">Introduction and motivation</h3>
-                <p class="explanation">The Academy of Motion Picture Arts and Sciences, better known colloquially as
-                    just "The Academy," has, for almost a century, been responsible for identifying the most talented
-                    actors and actresses based on their performances in their films of the most recent year. That being
-                    said, the Academy has oft been the subject of criticism, biasing movies with majority white cast and
-                    crew, and for that reason and others, infiltrating the innermost circle of award-winning actors and
-                    actresses has called the Academy's objectivity into question.</p>
-                <p class="explanation">This project seeks to gain insight into what it takes, exactly, to win an Oscar.
-                    Where are these actors and actresses from? How are they connected? And does being better connected
-                    in Hollywood make you more predisposed to catch the eye of the Academy?</p>
+                <p class="explanation">For almost a century, the Academy of Motion Picture Arts and Sciences,
+                    colloquially known as "The Academy," has been responsible for identifying the most talented
+                    actors and actresses based on their performances in films of the most recent year. This project
+                    seeks to gain insight into what it takes, exactly, to win an Oscar. Where are these actors and
+                    actresses from? How are they connected? And does being better connected in Hollywood make you more
+                    predisposed to catch the eye of the Academy?
+                </p>
             </div>
 
             <div class="row">
                 <!-- content | map -->
                 <h3 class="explanation-subheading">Their humble beginnings</h3>
                 <p class="explanation">Where are these successful actors from? How has that geographic distribution
-                    changed over time? Is there a common denominator here? For example, how common is it for these
-                    actors to hail from cinema hubs like NYC and LA? Are there stars from rural areas too? Every
-                    continent? This visualization is meant to be an exploratory tool for users to dive deeper into these
-                    questions.</p>
-                <p class="explanation">Hover over a marker to see what actor is from that area of the world, and learn a
-                    little bit more about them. Curious about one award type in particular, or about winners only?
-                    Filter your search to look into, say, where Best Supporting Actress winners have hailed from. Filter
-                    by birth year of the actors--has the geographic makeup of today's top actors and actresses changed
-                    over time?</p>
+                    changed over time? Is there a common denominator here? This visualization is meant to be an
+                    exploratory tool for users to dive deeper into these questions. Hover over a marker to see what
+                    actor is from that area of the world, and learn a little bit more about them. Filter by birth year
+                    of the actors. Has the geographic makeup of top actors and actresses changed over time?</p>
+                <p class="explanation">Some things worth noting: Our nominees and winners are overwhelmingly from the
+                    United States and Europe, especially the U.K. We do not start to see many international nominees or
+                    winners from outside of Europe or the U.S. until the 20th century. Most of the nominees and winners
+                    are white. There is clustering around cinema hubs like NYC and LA. </p>
             </div>
 
             <div class="row">
@@ -441,7 +438,8 @@
                 </form>
             </div>
             <div class="row">
-                <label>Click and drag the following timeline to select actors and actresses born in the timerange of your choosing.</label>
+                <label>Click and drag the following timeline to select actors and actresses born in the timerange of
+                    your choosing.</label>
             </div>
             <div class="row" style="height: 18vh; padding: 0; border: 0">
                 <div id="brushDiv" style="height: 100%; width:100%;"></div>
@@ -461,49 +459,80 @@
                 </div>
             </div>
 
-            <p class="row">
-                <!-- content | map -->
-            <h3 class="explanation-subheading">Trends over time</h3>
-            <p class="explanation">After playing around with the birthplace visualization, you may have come to one of
-                the same conclusions that we did:</p>
-            <p class="explanation impact">The Oscar-nominated actors and actresses of Old Hollywood were mostly
-                American- and European-born, and we see residual effects of this trend today.</p>
-            <p class="explanation">Parasite (2019) was the first foreign film to win the Academy Award for Best Picture
-                in the history of the organization. There is a striking lack of international actors and actresses
-                nominated for Oscars.</p>
-            <p class="explanation">From both the network visualization and the series of barcharts, you may have also
-                reached the conclusion that</p>
-            <p class="explanation impact">The Oscar-nominated actors and actresses of recent years are not as
-                interconnected
-                as the Oscar-nominated actors and actresses of earlier years.</p>
-            <p class="explanation">You may ask if actors that won Academy Awards in the 1950s, for instance, were better
-                connected with other Oscar nominees of that decade because they were able to live out full lifelong
-                careers, producing more movies and working with more people. This is debunked, however, by taking a
-                closer look at the average number of Oscar-winning costars per film each actor has. This statistic has
-                been on the decline in recent years, indicating that the frequency with which Oscar-nominated actors and
-                actresses work with one another is generally decreasing.</p>
-            <p class="explanation">Take a look at the barchart visualization, and compare the unnormalized graphs
-                to the normalized graphs. You may notice that both the unnormalized winner and nominee graphs contain
-                a mixed bag of men and women, while the normalized graphs feature more women than their unnormalized
-                counterparts. This holds true as you brush
-                through different time periods.</p>
-            <p class="explanation impact">This means that Oscar-winning women are in fewer movies than Oscar-winning
-                men</p>
-            <p class="explanation">The average number of Oscar-nominated costars per film is calculated by dividing the
-                total number of connections an Oscar nominee has by the total number of films the actor has been in.
-                Since the number of connections is the same between men and women, but the average number of costars per
-                film is higher for women than for men, that must mean that Oscar-winning women are in fewer films than
-                their male counterparts. Movies are written for men; Oscar-winning women are simply in fewer films.</p>
-            <p class="explanation"> Finally,</p>
-            <p class="explanation impact">Number of connections is not a good predictor of number of Oscar wins or
-                number of Oscar nominations.</p>
-            <p class="explanation">Our visualization project began with the hypothesis that better-connected actors and
-                actresses are more likely to win Oscars than their less-connected counterparts, but based on the network
-                visualization above, there isn't a clear connection between number of connections to a node and the
-                number of Oscar wins an actor or actress has.</p>
+            <div class="row">
+                <h3 class="explanation-subheading">Key takeaways</h3>
+                <p class="explanation">After playing around with the birthplace visualization, you may have come to one
+                    of
+                    the same conclusions that we did:</p>
+                <p class="explanation impact">The Oscar-nominated actors and actresses of Old Hollywood were mostly
+                    American- and European-born, and we see residual effects of this trend today.</p>
+                <p class="explanation">Parasite (2019) was the first foreign film to win the Academy Award for Best
+                    Picture
+                    in the history of the organization. There is a striking lack of international actors and actresses
+                    nominated for Oscars.</p>
+                <p class="explanation">From both the network visualization and the series of barcharts, you may have
+                    also
+                    reached the conclusion that</p>
+                <p class="explanation impact">The Oscar-nominated actors and actresses of recent years are not as
+                    interconnected
+                    as the Oscar-nominated actors and actresses of earlier years.</p>
+                <p class="explanation">You may ask if actors that won Academy Awards in the 1950s, for instance, were
+                    better
+                    connected with other Oscar nominees of that decade because they were able to live out full lifelong
+                    careers, producing more movies and working with more people. This is debunked, however, by taking a
+                    closer look at the average number of Oscar-winning costars per film each actor has. This statistic
+                    has
+                    been on the decline in recent years, indicating that the frequency with which Oscar-nominated actors
+                    and
+                    actresses work with one another is generally decreasing.</p>
+                <p class="explanation">Take a look at the barchart visualization, and compare the unnormalized graphs
+                    to the normalized graphs. You may notice that both the unnormalized winner and nominee graphs
+                    contain
+                    a mixed bag of men and women, while the normalized graphs feature more women than their unnormalized
+                    counterparts. This holds true as you brush
+                    through different time periods.</p>
+                <p class="explanation impact">This means that Oscar-winning women are in fewer movies than Oscar-winning
+                    men</p>
+                <p class="explanation">The average number of Oscar-nominated costars per film is calculated by dividing
+                    the
+                    total number of connections an Oscar nominee has by the total number of films the actor has been in.
+                    Since the number of connections is the same between men and women, but the average number of costars
+                    per
+                    film is higher for women than for men, that must mean that Oscar-winning women are in fewer films
+                    than
+                    their male counterparts. Movies are written for men; Oscar-winning women are simply in fewer
+                    films.</p>
+                <p class="explanation"> Finally,</p>
+                <p class="explanation impact">Number of connections is not a good predictor of number of Oscar wins or
+                    number of Oscar nominations.</p>
+                <p class="explanation">Our visualization project began with the hypothesis that better-connected actors
+                    and
+                    actresses are more likely to win Oscars than their less-connected counterparts, but based on the
+                    network
+                    visualization above, there isn't a clear connection between number of connections to a node and the
+                    number of Oscar wins an actor or actress has.</p>
+            </div>
+            <div class="row">
+                <h3 class="explanation-subheading">Looking ahead</h3>
+                <p class="explanation">This visualization project has hopefully given you a taste of just how exclusive
+                    and hard-to-please the Academy can be. The makeup of Oscar nominees since the Academy's inception
+                    has consisted mainly of white- and Western-centric actors and actresses, and there's a gender bias
+                    in that women are not featured in Oscar-nominated films as much as men are, further reflected in
+                    recent scandals on the <a href="https://theconversation.com/exploring-the-data-on-hollywoods-gender-pay-gap-127414#:~:text=Pay%20inequality&text=In%20the%20film%20industry%2C%20the,as%20the%20top%20male%20actors">wage gap between actors and actresses</a>. This project, however, only begins to
+                    address
+                    these limitations for the Best Actor/Actress and Best Supporting Actor/Actress categories, and says nothing about the lack of
+                    diversity for others that work hard to produce such culturally significant films.</p>
+                <p class="explanation">It's important to support efforts to integrate the Academy with those that were
+                    previously marginalized and underrepresented. Some ways to do that include <a
+                            href="https://www.oscars.org/news/academy-takes-historic-action-increase-diversity">changing
+                        the composition of the Academy itself</a>, and to <a
+                            href="https://timesupfoundation.org/work/times-up-entertainment/join-the-fight-for-safety-equity-and-power-in-entertainment/">support
+                        efforts to diversify Hollywood</a>. We should continue to press for widespread changes, as <a
+                            href="https://www.washingtonpost.com/business/2020/09/09/oscars-diversity-previous-winners/">some
+                        of the Academy's previous efforts have effected less change that hoped</a>.</p>
+            </div>
         </div>
     </div>
-</div>
 </div>
 
 <!-- Load JS libraries -->

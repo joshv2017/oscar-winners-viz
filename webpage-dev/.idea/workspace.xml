@@ -23,11 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9d7acf5-2c56-4ed0-b11e-527f4fefc1c8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../python-notebooks/data-cleaning.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../python-notebooks/data-cleaning.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/barChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/barChart.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +99,7 @@
       <workItem from="1606061808239" duration="1923000" />
       <workItem from="1606064280383" duration="4129000" />
       <workItem from="1606085675220" duration="6728000" />
-      <workItem from="1607031222056" duration="21581000" />
+      <workItem from="1607031222056" duration="22921000" />
     </task>
     <servers />
   </component>
