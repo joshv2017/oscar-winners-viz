@@ -9,9 +9,10 @@ You can find our process book at the following <a href="https://docs.google.com/
 ---
 ## The data
 
-You can find all data acquisition in the `data-creation.ipynb` and `data-cleaning.ipynb` Python notebooks, in the `python-notebooks` subdirectory. The data that we use for this visualization project comes from two sources:
-- The data on actors and actresses and the Oscars they were nominated for/won comes from the official <a href="http://awardsdatabase.oscars.org/">Official Academy Awards Database</a>. This website provides listings of all awards handed out since the first annual Academy Awards, and we scraped the results page of the website for awards pertaining to Best Actor/Actress. You can find this scraped data in the file `data/awards.csv`.
+You can find all data acquisition in the `data-creation.ipynb` and `data-cleaning.ipynb` Python notebooks, in the `python-notebooks` subdirectory, which save the created data files to `webpage-dev/data`. The data that we use for this visualization project comes from two sources:
+- The data on actors and actresses and the Oscars they were nominated for/won comes from the official <a href="http://awardsdatabase.oscars.org/">Official Academy Awards Database</a>. This website provides listings of all awards handed out since the first annual Academy Awards, and we scraped the results page of the website for awards pertaining to Best Actor/Actress. You can find this scraped data in the file `data/awards.json`.
 - The data on actors and actresses and their biographical information comes from <a href="https://www.imdb.com/">IMDb</a>, and the data acquisition is done using the <a href="https://buildmedia.readthedocs.org/media/pdf/imdbpy/latest/imdbpy.pdf">IMDbPY</a> Python module. We can access biographies, birthdate/birthplace information, and complete filmographies of each actor that was nominated for an Oscar. You can find this acquired data in the file `data/actors.csv`.
+- To create the data for the network visualization, the Python notebooks aggregate the credited appearances of each actor and find other actors that have the same credit appearances in their filmography. This data is stored in the file `data/network_data.json`, stored in a format that allows easy parsability by d3's force simulator.
 ---
 ## The code
 
