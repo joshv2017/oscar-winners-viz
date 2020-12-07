@@ -15,3 +15,5 @@ You can find all data acquisition in the `data-creation.ipynb` and `data-cleanin
 ## The code
 
 The bulk of the code that is used to create our webpage can be found in the `webpage-dev` directory. Everything in this directory has been created ourselves, except for the leaflet files in the `js/` folder, the `img/` folder, the `fonts/` folder, and the `leaflet.css` file in the `css/` folder.
+
+The bulk of this project has been completed in JavaScript, using the JQuery and d3.js V6 packages.
