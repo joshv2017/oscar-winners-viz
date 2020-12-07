@@ -8,8 +8,10 @@ You can find our process book at the following <a href="https://docs.google.com/
 
 ## The data
 
-You can find all data acquisition in the Python notebook `data-creation.ipynb`, in the `python-notebooks` directory. The data that we use for this visualization project comes from two sources:
+You can find all data acquisition in the `data-creation.ipynb` and `data-cleaning.ipynb` Python notebooks, in the `python-notebooks` subdirectory. The data that we use for this visualization project comes from two sources:
 - The data on actors and actresses and the Oscars they were nominated for/won comes from the official <a href="http://awardsdatabase.oscars.org/">Official Academy Awards Database</a>. This website provides listings of all awards handed out since the first annual Academy Awards, and we scraped the results page of the website for awards pertaining to Best Actor/Actress. You can find this scraped data in the file `data/awards.csv`.
 - The data on actors and actresses and their biographical information comes from <a href="https://www.imdb.com/">IMDb</a>, and the data acquisition is done using the <a href="https://buildmedia.readthedocs.org/media/pdf/imdbpy/latest/imdbpy.pdf">IMDbPY</a> Python module. We can access biographies, birthdate/birthplace information, and complete filmographies of each actor that was nominated for an Oscar. You can find this acquired data in the file `data/actors.csv`.
 ---
-## What this repository consists of
+## The code
+
+The bulk of the code that is used to create our webpage can be found in the `webpage-dev` directory. Everything in this directory has been created ourselves, except for the leaflet files in the `js/` folder, the `img/` folder, the `fonts/` folder, and the `leaflet.css` file in the `css/` folder.
